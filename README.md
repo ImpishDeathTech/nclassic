@@ -10,7 +10,7 @@ Object = require('nclassic')
 ```
 
 ### Creating a new class
-[classic example: Point](https://github.com/rxi/classic/README.md)
+[classic example: Point](https://github.com/rxi/classic/blob/master/README.md)
 ```lua
 Vector2 = Object:extend('Vector2')
 
@@ -28,7 +28,7 @@ print(tostring(Vector2)) -- prints a string similar to class: 0x563b7a1dacc0
 ```
 
 ### Creating a new object and playing with it
-[classic example: Point](https://github.com/rxi/classic/README.md)
+[classic example: Point](https://github.com/rxi/classic/blob/master/README.md)
 nclassic example:
 ```lua
 a = Vector2(23, 33)
@@ -38,7 +38,7 @@ print(tostring(a)) -- prints a string similar to 'Vector2: 0x563b7a1dacc0' or 'o
 ```
 
 ### Extending a class
-[classic example: Rect](https://github.com/rxi/classic/README.md)
+[classic example: Rect](https://github.com/rxi/classic/blob/master/README.md)
 nclassic example:
 ```lua
 
@@ -64,7 +64,7 @@ v:is(Vector3) -- true
 ```
 
 # Using mixins
-[classic example: PairPrinter](https://github.com/rxi/classic/README.md)
+[classic example: PairPrinter](https://github.com/rxi/classic/blob/master/README.md)
 nclassic examples: override and fields
 
 ```lua
@@ -89,7 +89,7 @@ Rect:override({
 ```
 
 ### Using static members
-[classic example: Point.scale](https://github.com/rxi/classic)
+[classic example: Point.scale](https://github.com/rxi/classic/blob/master/README.md)
 nclassic example:
 ```lua
 Vector2 = Object:extend('Vector2')
@@ -106,7 +106,7 @@ end
 ```
 
 ### Creating a metamethod
-[classic example: __tostring](https://github.com/rxi/classic/README.md)
+[classic example: __tostring](https://github.com/rxi/classic/blob/master/README.md)
 nclassic example:
 ```lua
 -- adding new metamethods
