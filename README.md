@@ -21,7 +21,7 @@ function Vector2:new(x, y)
   self.y = y or 0
 end
 
-function Vector2:delete(
+function Vector2:delete()
   self.x = nil
   self.y = nil
 end
@@ -38,6 +38,7 @@ a = Vector2(23, 33)
 print(a.x + 50)
 print(a.y / 3)
 print(tostring(a)) -- prints a string similar to 'Vector2: 0x563b7a1dacc0' or 'object: 0x563b7a1dacc0' depending on if a string was provided to 
+                   -- Object:extend(type_str)
 ```
 
 ### Extending a class
