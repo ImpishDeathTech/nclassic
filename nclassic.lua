@@ -80,7 +80,7 @@ function Object:is(T)
   return false
 end
 
-function Object:equals(cls) 
+function Object:__eq(cls) 
   local retVal = true
 
   for k, v in pairs(cls) do
