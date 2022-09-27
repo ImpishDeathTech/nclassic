@@ -95,7 +95,7 @@ Rect:override({
 ```
 
 ### Using static members
-[classic example: Point.scale](https://github.com/rxi/classic/blob/master/README.md)
+[classic example: Point.scale/Point:getScaled()](https://github.com/rxi/classic/blob/master/README.md)
 
 nclassic example:
 ```lua
