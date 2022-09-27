@@ -69,17 +69,6 @@ function Object:override(...)
   end
 end
 
-function Object:metatable(...)
-  for _, cls in pairs({...}) do
-    for k, v in pairs(cls) do
-      if k ~= '__gc' and k ~= '__tostring' then 
-        getmetatable(self)[k] = v
-      end
-    end
-  end
-  return getmetatable(self)
-end
-
 function Object:is(T)
   local mt = getmetatable(self)
   while mt do
