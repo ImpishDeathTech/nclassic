@@ -1,7 +1,7 @@
 # nclassic (neo classic)
 A tiny class module for Lua, improving on [rxi/classic](https://github.com/rxi/classic) to take advantage of some lua 5.4 convensions. 
 
-Attempts to stay simple and provide decent performance by avoiding unnecessary over-abstraction.
+Attempts to stay simple and provide decent performance by avoiding over-abstraction.
 
 ## Usage
 The [module](https://github.com/ImpishDeathTech/nclassic/blob/master/nclassic.lua) should be dropped into an existing project, or dropped into the lua/5.4 directory, and required as convension:
