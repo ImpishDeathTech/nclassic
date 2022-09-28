@@ -63,9 +63,26 @@ end
 # Checking an object's type
 ```lua
 local v = Vector2(666, math.pi)
-v:is(Object)  -- true
-v:is(Vector2) -- true
-v:is(Vector3) -- true
+v:is(Object)  -- is true
+v:is(Vector2) -- is true
+v:is(Vector3) -- is false
+v.is(Rect(), Vector2()) -- is true cause Rect extends Vector2, see below
+```
+# Object operations
+```lua
+a = Vector2(666, math.pi)
+b = Vector2(1337, .445)
+
+a == b -- is false
+a ~= b -- is true
+
+c = Vector2(b.x, b.y)
+b == c -- is true
+
+r = Rect(50, 80, 600, 800)
+
+#r -- produces the object's member count, which for r, would be 4
+
 ```
 
 # Using mixins
@@ -128,8 +145,9 @@ function Vector2:__add(value)
   end
 end
 
-a = Vector2(23, 44); b = Vector2(44, 45.5)
-c = a + b
+a = Vector2(23, 44)
+b = Vector2(44, 45.5)
+c = a + b -- produces c.x = 67 and c.y = 89.5
 ```
 
 ## License
