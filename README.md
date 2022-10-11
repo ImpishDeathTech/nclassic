@@ -8,8 +8,8 @@ The [module](https://github.com/ImpishDeathTech/nclassic/blob/master/nclassic.lu
 ```lua
 Object = require('nclassic')
 ```
-#### An example can be found here: 
-**(Angle)[https://github.com/ImpishDeathTech/nclassic/blob/master/example/angle.lua]**
+### Examples: 
+#### [Angle](https://github.com/ImpishDeathTech/nclassic/blob/master/example/angle.lua)**
 
 This example in anction
 
