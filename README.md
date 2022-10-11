@@ -9,7 +9,7 @@ The [module](https://github.com/ImpishDeathTech/nclassic/blob/master/nclassic.lu
 Object = require('nclassic')
 ```
 ### Examples: 
-#### [Angle](https://github.com/ImpishDeathTech/nclassic/blob/master/example/angle.lua)**
+### [Angle](https://github.com/ImpishDeathTech/nclassic/blob/master/example/angle.lua)
 
 This example in anction
 
