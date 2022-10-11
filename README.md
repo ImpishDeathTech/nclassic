@@ -8,7 +8,37 @@ The [module](https://github.com/ImpishDeathTech/nclassic/blob/master/nclassic.lu
 ```lua
 Object = require('nclassic')
 ```
+#### An example can be found here: (Angle)[]
+This example in anction
 
+```lua
+> Angle = require 'example.angle'
+> a = Angle(180)
+> b = Angle:radians(math.pi)
+> a + b
+360°
+> b
+3.141593 rad
+> c = a + b
+> c
+360°
+> d = b + c
+> b
+3.141593 rad
+> c:deg()
+360°
+> c:rad()
+6 rad
+> c:setRadix(2)
+> c
+6.28 rad
+> a == b
+true
+> a == c
+false
+> c > b
+true
+```
 ### Creating a new class
 [classic example: Point](https://github.com/rxi/classic/blob/master/README.md)
 
