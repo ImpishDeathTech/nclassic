@@ -157,7 +157,7 @@ function Angle:__lt(angle)
 
     elseif type(value) == 'number' then
         if self.asradians then
-            return self:asRadians() < number
+            return self:asRadians() < angle
         else 
             return self.angle < angle
         end
@@ -172,7 +172,7 @@ function Angle:__le(angle)
 
     elseif type(value) == 'number' then
         if self.asradians then
-            return self:asRadians() <= number
+            return self:asRadians() <= angle
         else
             return self.angle <= angle
         end
@@ -188,7 +188,7 @@ function Angle:__eq(angle)
 
     elseif type(value) == 'number' then
         if self.asradians then
-            return self:asRadians() <= number
+            return self:asRadians() <= angle
         else
             return self.angle == angle
         end
