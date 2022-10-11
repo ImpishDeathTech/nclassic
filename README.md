@@ -21,7 +21,6 @@ Object = require('nclassic')
 > c = a + b
 > c
 360°
-> d = b + c
 > b
 3.141593 rad
 > c:deg()
