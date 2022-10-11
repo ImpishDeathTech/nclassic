@@ -42,7 +42,7 @@ true
 
 nclassic example:
 ```lua
-Vector2 = Object:extend('Vector2')
+Vector2 = Object:extend('vector2')
 
 function Vector2:new(x, y)
   self.x = x or 0
@@ -75,7 +75,7 @@ print(tostring(a)) -- prints a string similar to 'Vector2: 0x563b7a1dacc0' or 'o
 nclassic example:
 ```lua
 
-Vector3 = Vector2:extend('Vector3')
+Vector3 = Vector2:extend('vector3')
 
 function Vector3:new(x, y, z)
   self:fields(Vector2(x, y))
@@ -119,7 +119,7 @@ r = Rect(50, 80, 600, 800)
 nclassic examples: override and fields
 
 ```lua
-Rect = Vector2:extend('Rect')
+Rect = Vector2:extend('rect')
 Rect:override({
   new = function (self, x, y, w, h)
     self:fields(Vector2(x, y),
