@@ -14,7 +14,7 @@ require 'nclassic'
 
 ### [Angle](https://github.com/ImpishDeathTech/nclassic/blob/master/example/angle.lua) in action:
 ```lua
-> require 'angle.lua'
+> require 'examples'
 > a = Angle(180)
 > b = Angle:radians(math.pi)
 > a + b
