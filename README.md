@@ -2,14 +2,19 @@
 A tiny class module for Lua, improving on [rxi/classic](https://github.com/rxi/classic) to take advantage of some lua 5.4 convensions. 
 
 ## Usage
-The [module](https://github.com/ImpishDeathTech/nclassic/blob/master/nclassic.lua) should be dropped into an existing project, or dropped into the lua/5.4 directory, and required as convension:
+The [1.1 module](https://github.com/ImpishDeathTech/nclassic/blob/master/1_1/nclassic.lua) should be dropped into an existing project, or dropped into the lua/5.4 directory, and required as convension:
 ```lua
 Object = require('nclassic')
 ```
 
+The [1.2 module](https://github.com/ImpishDeathTech/nclassic/blob/master/1_1/nclassic.lua) should be dropped into the lua/5.4 directory, or installed via the makefile and required as convension:
+```lua
+require 'nclassic'
+```
+
 ### [Angle](https://github.com/ImpishDeathTech/nclassic/blob/master/example/angle.lua) in action:
 ```lua
-> Angle = require 'example.angle'
+> require 'angle.lua'
 > a = Angle(180)
 > b = Angle:radians(math.pi)
 > a + b
@@ -40,7 +45,7 @@ true
 
 nclassic example:
 ```lua
-Vector2 = Object:extend('vector2')
+class 'Vector2'
 
 function Vector2:new(x, y)
   self.x = x or 0
