@@ -17,6 +17,7 @@ install-1.2:
   sudo cp nclassic.so /usr/lib/lua/5.4/nclassic.so
  
 install:
+  make install-1.0
   make install-1.2
 
 remove-1.0:
@@ -28,6 +29,9 @@ remove-1.1:
 remove-1.2:
   sudo rm /usr/lib/lua/5.4/nclassic.so
 
+remove:
+  make remove-1.0
+  make remove-1.2
 
 clean:
   rm nclassic.so
