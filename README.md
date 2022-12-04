@@ -12,7 +12,7 @@ The [1.2 module](https://github.com/ImpishDeathTech/nclassic/blob/master/1_1/ncl
 require 'nclassic'
 ```
 
-### [Angle](https://github.com/ImpishDeathTech/nclassic/blob/master/example/angle.lua) in action:
+### [Angle](https://github.com/ImpishDeathTech/nclassic/blob/master/examples/angle.lua) in action:
 ```lua
 > require 'examples'
 > a = Angle(180)
