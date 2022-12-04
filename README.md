@@ -8,9 +8,15 @@ Object = require('nclassic')
 ```
 
 The [1.2 module](https://github.com/ImpishDeathTech/nclassic/blob/master/1_2/nclassic.cxx) should be dropped into the lua/5.4 directory, or installed via the makefile and required as convension:
+```sh
+make build && make install && make clean
+```
+
 ```lua
 require 'nclassic'
 ```
+
+To uninstall nclassic 1.2, simply `make remove`
 
 ### [Angle](https://github.com/ImpishDeathTech/nclassic/blob/master/examples/angle.lua) in action:
 ```lua
