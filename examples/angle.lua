@@ -8,6 +8,8 @@
 -- the terms of the MIT license. See LICENSE for details.
 --
 require 'nclassic'
+
+-- defining a global class
 class 'Angle'
 
 -- the radix is the number of digits to represent after the radix point
