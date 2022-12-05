@@ -30,11 +30,14 @@
 #include <string>
 
 #define NCLASSIC_BADARGUMENT "bad argument #%d to '%s' (%s expected, got %s)"
+#define NCLASSIC_VERSION "1.2"
+#define NCLASSIC_LUA static const char*
+#define NCLASSIC_CALLBACK static int
 
 /**
  * A stripped down version of classic's code with added 'fields' method
  */
-static const char* NCLASSIC_OBJECT_CODE = {
+NCLASSIC_LUA NCLASSIC_OBJECT = {
 R"_lua_(
 local o = {}
 o.__index = o
@@ -81,7 +84,7 @@ return o
  * \a class.extends(class)      -> class
  * \b class.extends(class,name) -> class
  */
-const char* NCLASSIC_EXTENDS_CODE = {
+NCLASSIC_LUA NCLASSIC_EXTENDS = {
 R"_lua_(
 return function (target, name)
   local cls = {}
@@ -106,7 +109,7 @@ end
  *
  * \a class.is(target,class) -> boolean
  */
-const char* NCLASSIC_IS_CODE = {
+NCLASSIC_LUA NCLASSIC_IS = {
 R"_lua_(
 return function (target, cls)
   local mt = getmetatable(target)
@@ -141,7 +144,7 @@ end
  *
  * \a class.equals(class,target) -> boolean
  */
-const char* NCLASSIC_EQUALS_CODE = {
+NCLASSIC_LUA NCLASSIC_EQUALS = {
 R"_lua_(
 return function (cls, target) 
   local retVal = true
@@ -163,7 +166,7 @@ end
  * \a class.object 'name' -> class
  * \b class.object(name)  -> class
  */
-static int nclassic_object(lua_State* L) {
+NCLASSIC_CALLBACK nclassic_object(lua_State* L) {
     if (lua_gettop(L) == 1) {
         if (lua_isstring(L, 1)) {
             std::string name = lua_tostring(L, 1);
@@ -171,7 +174,7 @@ static int nclassic_object(lua_State* L) {
             lua_getglobal(L, "class");
             lua_getfield(L, -1, "extends");
 
-            luaL_dostring(L, NCLASSIC_OBJECT_CODE);
+            luaL_dostring(L, NCLASSIC_OBJECT);
             lua_pushlstring(L, name.c_str(), name.length());
             lua_call(L, 2, 1);
             lua_gc(L, LUA_GCCOLLECT);
@@ -189,7 +192,7 @@ static int nclassic_object(lua_State* L) {
             lua_pop(L, -2);
 
             if (lua_istable(L, -1)) {
-                luaL_dostring(L, NCLASSIC_OBJECT_CODE);
+                luaL_dostring(L, NCLASSIC_OBJECT);
                 lua_setmetatable(L, -2);
                 lua_pushlstring(L, name.c_str(), name.length());
                 lua_setfield(L, -2, "__name");
@@ -222,7 +225,7 @@ static int nclassic_object(lua_State* L) {
  * \a class 'name'
  * \b class(name)
  */
-static int nclassic_classdef(lua_State* L) {
+NCLASSIC_CALLBACK nclassic_classdef(lua_State* L) {
     if (lua_gettop(L) == 2) {
         if (lua_isstring(L, -1)) {
             std::string name = lua_tostring(L, -1);
@@ -255,7 +258,7 @@ static int nclassic_classdef(lua_State* L) {
  *
  * \a typename(value) -> string
  */
-static int nclassic_typename(lua_State* L) {
+NCLASSIC_CALLBACK nclassic_typename(lua_State* L) {
     if (lua_istable(L, -1)) {
         luaL_getmetafield(L, -1, "__name");
         if (!lua_isnil(L, -1) && lua_isstring(L, -1)) {
@@ -284,11 +287,11 @@ extern "C" {
         lua_newtable(L);
         lua_pushcfunction(L, nclassic_object);
         lua_setfield(L, -2, "object");
-        luaL_dostring(L, NCLASSIC_EXTENDS_CODE);
+        luaL_dostring(L, NCLASSIC_EXTENDS);
         lua_setfield(L, -2, "extends");
-        luaL_dostring(L, NCLASSIC_IS_CODE);
+        luaL_dostring(L, NCLASSIC_IS);
         lua_setfield(L, -2, "is");
-        luaL_dostring(L, NCLASSIC_EQUALS_CODE);
+        luaL_dostring(L, NCLASSIC_EQUALS);
         lua_setfield(L, -2, "equals");
         
         lua_newtable(L);
@@ -298,6 +301,9 @@ extern "C" {
         lua_setfield(L, -2, "__name");
         lua_setmetatable(L, -2);
         lua_setglobal(L, "class");
+
+        lua_pushstring(L, NCLASSIC_VERSION);
+        lua_setglobal(L, "_CLASSVER");
 
         lua_settop(L, 0);
         lua_gc(L, LUA_GCCOLLECT);
