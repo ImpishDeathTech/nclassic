@@ -116,10 +116,10 @@ end
 # Checking an object's type
 ```lua
 local v = Vector2(666, math.pi)
-v:is(Object)  -- is true
-v:is(Vector2) -- is true
-v:is(Vector3) -- is false
-v.is(Rect(), Vector2()) -- is true cause Rect extends Vector2, see below
+class.is(v, Object)  -- is true
+class.is(v, Vector2) -- is true
+class.is(v, Vector3) -- is false
+class.is(Rect(), Vector2) -- is true cause Rect extends Vector2, see below
 ```
 # Object operations
 ```lua
@@ -145,23 +145,19 @@ nclassic examples: override and fields
 
 ```lua
 Rect = Vector2:extend('rect')
-Rect:override({
-  new = function (self, x, y, w, h)
+Rect.new = function (self, x, y, w, h)
     self:fields(Vector2(x, y),
     {
       width  = w or 0,
       height = h or 0
     })
-  end,
-  delete = function (self)
+end
+Rect.delete = function (self)
     for k, _ in pairs(self)
       self[k] = nil
       collectgarbage('step')
     end
-  end})
- 
- Trig = Vector2:extend('Trig')
- Trig:override(Rect)
+end
 ```
 
 ### Using static members
@@ -169,7 +165,7 @@ Rect:override({
 
 nclassic example:
 ```lua
-Vector2 = Object:extend('Vector2')
+Vector2 = class.object('Vector2')
 Vector2.offset = 50
 
 function Vector2:new(x, y)
