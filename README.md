@@ -100,7 +100,7 @@ print(tostring(a)) -- prints a string similar to 'Vector2: 0x563b7a1dacc0' or 'o
 nclassic example:
 ```lua
 
-Vector3 = Vector2:extend('vector3')
+Vector3 = class.extends(Vector2, 'vector3')
 
 function Vector3:new(x, y, z)
   self:fields(Vector2(x, y))
