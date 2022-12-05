@@ -13,8 +13,14 @@ install:
 	@sudo cp nclassic.so /usr/lib/lua/5.4/nclassic.so
 	@echo Done! ^,..,^
 
+remove:
+	@echo Uninstalling 'nclassic-1.2' ...
+	@sudo rm /usr/lib/lua/5.4/nclassic.so
+	@echo Done! ^,..,^
+
 clean:
 	@echo Cleaning up ..
 	@rm nclassic.so
 	@rm nclassic.o
 	@echo Done! ^,..,^
+
