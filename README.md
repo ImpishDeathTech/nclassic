@@ -144,7 +144,7 @@ r = Rect(50, 80, 600, 800)
 nclassic examples: override and fields
 
 ```lua
-Rect = Vector2:extend('rect')
+Rect = class.extends(Vector2, 'rect')
 Rect.new = function (self, x, y, w, h)
     self:fields(Vector2(x, y),
     {
