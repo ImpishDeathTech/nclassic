@@ -7,6 +7,7 @@
 -- This module is free software; you can redistribute it and/or modify it under
 -- the terms of the MIT license. See LICENSE for details.
 --
+Object = require('nclassic.1_1.core')
 
 local Angle = Object:extend('angle')
 -- the radix is the number of digits to represent after the radix point

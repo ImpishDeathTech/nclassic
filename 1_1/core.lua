@@ -1,5 +1,5 @@
 --
--- nclassic/1_1/core.lua
+-- nclassic.lua
 --
 -- based on https://github.com/rxi/classic
 -- 
@@ -9,6 +9,8 @@
 -- This module is free software; you can redistribute it and/or modify it under
 -- the terms of the MIT license. See LICENSE for details.
 --
+
+_CLASSVER = '1.1'
 
 local Object = {}
 
