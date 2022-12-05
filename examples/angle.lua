@@ -7,9 +7,7 @@
 -- This module is free software; you can redistribute it and/or modify it under
 -- the terms of the MIT license. See LICENSE for details.
 --
-
 require 'nclassic'
-
 class 'Angle'
 
 -- the radix is the number of digits to represent after the radix point
@@ -40,7 +38,7 @@ function Angle:new(angle, asRad, radix)
     if asRad then
         -- use it's own 'is' to check the angle, in case it is not an Angle
         -- since we want a radian from this, we'll set 'asradians' to true
-        if self.is(angle, Angle) then
+        if class.is(angle, Angle) then
             self.angle     = angle.angle
             self.radix     = angle.radix
             self.asradians = true
@@ -48,18 +46,18 @@ function Angle:new(angle, asRad, radix)
         -- set it to the defaults of a radian
         -- a radian's default radix is 2. that way if say, the angle is 180
         -- we'll see only 2 digits of pi. If you want different, dewit
-        elseif type(angle) == 'number' then
+        elseif typename(angle) == 'number' then
             self.angle     = angle * (180 / math.pi)
             self.radix     = 2
             self.asradians = true
         end
     else
         -- do the same as above, but copy everything from the angle
-        if self.is(angle, Angle) then
+        if class.is(angle, Angle) then
             self:fields(angle)
         
         -- else, set to the default values given
-        elseif type(angle) == 'number' then
+        elseif typename(angle) == 'number' then
             self.angle     = angle
             self.radix     = radix
         end
@@ -89,73 +87,73 @@ end
 
 -- We can do some cool stuff with metatables in 5.4, this was something I only recently found out
 -- For instance, we can do operator overloads, like in c++!
--- So, lets do some arithimatic and comparison overloads. The type of the resulting Angle should
--- be of the lvalue's radix and type
+-- So, lets do some arithimatic and comparison overloads. The typename of the resulting Angle should
+-- be of the lvalue's radix and typename
 
 function Angle:__add(angle)
-    if self.is(angle, Angle) then
+    if class.is(angle, Angle) then
         local o = Angle(self.angle + angle.angle)
         o.radix     = self.radix
         o.asradians = self.asradians
         return o
 
-    elseif type(value) == 'number' then
+    elseif typename(value) == 'number' then
         local o = Angle(self.angle + angle)
         o.radix     = self.radix
         o.asradians = self.asradians
         return o
     else
-        error(string.format("bad argument #1 to 'add' (angle or number expected, got %s)" , type(angle)))
+        error(string.format("bad argument #1 to 'add' (angle or number expected, got %s)" , typename(angle)))
     end
 end
 
 function Angle:__sub(angle)
-    if self.is(angle, Angle) then
+    if class.is(angle, Angle) then
         local o = Angle(self.angle - angle.angle)
         o.asradians = self.asradians
         o.radix = self.radix
         return o
 
-    elseif type(value) == 'number' then
+    elseif typename(value) == 'number' then
         local o = Angle(self.angle - angle)
         o.asradians = self.asradians
         o.radix = self.radix
         return o
     else
-        error(string.format("bad argument #1 to 'sub' (angle or number expecetd, got %s)", type(angle)))
+        error(string.format("bad argument #1 to 'sub' (angle or number expecetd, got %s)", typename(angle)))
     end
 end
 
 function Angle:__mul(angle)
-    if self.is(angle, Angle) then
+    if class.is(angle, Angle) then
         local o     = Angle(self.angle * angle.angle, self.asradians)
         o.asradians = self.asradians
         o.radix     = self.radix
 
-    elseif type(value) == 'number' then
+    elseif typename(value) == 'number' then
         local o     = Angle(self.angle * angle)
         o.asradians = self.asradians
         o.radix     = self.radix
         return o
     else
-        error(string.format("bad argument #1 to 'sub' (angle or number expecetd, got %s)", type(angle)))
+        error(string.format("bad argument #1 to 'sub' (angle or number expecetd, got %s)", typename(angle)))
     end
 end
 
 function Angle:__div(angle)
-    if self.is(angle, Angle) then
+    if class.is(angle, Angle) then
         local o     = Angle(self.angle / angle.angle)
         o.asradians = self.asradians
         o.radix     = self.radix
         return o
 
-    elseif type(value) == 'number' then
+    elseif typename(value) == 'number' then
         local o     = Angle(self.angle / angle)
         o.asradians = self.asradians
         o.radix     = self.radix
         return o
     else
-        error(string.format("bad argument #1 to 'sub' (angle or number expecetd, got %s)", type(angle)))
+        error(string.format("bad argument #1 to 'sub' (angle or number expecetd, got %s)", typename(angle)))
     end
 end
 
@@ -163,10 +161,10 @@ end
 -- so check against angles, numbers, and specify for if 
 -- we should check against radians or degrees
 function Angle:__lt(angle)
-    if self.is(angle, Angle) then
+    if class.is(angle, Angle) then
         return self.angle < angle.angle
 
-    elseif type(value) == 'number' then
+    elseif typename(value) == 'number' then
         if self.asradians then
             return self:asRadians() < angle
         else 
@@ -178,10 +176,10 @@ function Angle:__lt(angle)
 end
 
 function Angle:__le(angle)
-    if self.is(angle, Angle) then
+    if class.is(angle, Angle) then
         return self.angle <= angle.angle
 
-    elseif type(value) == 'number' then
+    elseif typename(value) == 'number' then
         if self.asradians then
             return self:asRadians() <= angle
         else
@@ -194,10 +192,10 @@ end
 
 
 function Angle:__eq(angle)
-    if self.is(angle, Angle) then
+    if class.is(angle, Angle) then
         return self.angle == angle.angle
 
-    elseif type(value) == 'number' then
+    elseif typename(value) == 'number' then
         if self.asradians then
             return self:asRadians() <= angle
         else
@@ -220,8 +218,8 @@ end
 
 -- set radix with error checking
 function Angle:setRadix(num)
-    assert(type(num) == 'number',
-        string.format("badargument #1 to 'setradix' (number expected, got %s)", type(num)))
+    assert(typename(num) == 'number',
+        string.format("badargument #1 to 'setradix' (number expected, got %s)", typename(num)))
 
     self.radix = math.abs(math.floor(num))
 end
