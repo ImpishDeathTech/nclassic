@@ -28,10 +28,11 @@ typename(s)      -- 'Object'
 typename(Object) -- 'class' 
 ```
 
-The [1.2 module](https://github.com/ImpishDeathTech/nclassic/blob/master/1_2/nclassic.cxx) should be installed via luarocks:
+The [1.2.1 module](https://github.com/ImpishDeathTech/nclassic/blob/master/1_2_1/nclassic.cxx) should be installed via luarocks:
 ```sh
 sudo luarocks install nclassic
 ```
+Or included via the nclassic.h header and compiled along with a c++ project
 
 To uninstall nclassic 1.2, simply `make remove`
 
