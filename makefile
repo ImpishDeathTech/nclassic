@@ -15,7 +15,11 @@ build:
 	@echo CXX Building 'nclassic.so' ...
 	@c++ -std=c++20 -shared -o nclassic.so nclassic.o -llua
 
-install:
+install: nclassic.so nclassic.o
+	cp nclassic.so $(INST_LIBDIR)
+	make clean
+
+manual-install:
 	@echo Installing 'nclassic-1.2.1' ...
 	@sudo cp nclassic.so /usr/lib/lua/5.4/nclassic.so
 	@echo Done! ^,..,^
