@@ -10,7 +10,7 @@ Object = require('nclassic')
 The [1.2 module](https://github.com/ImpishDeathTech/nclassic/blob/master/1_2/nclassic.cxx) should be compiled with:
 ```sh
 c++ -std=c++20 -fpic -c 1_2/nclassic.cxx 
-c++ -std=c++20 -shared -o nclassic.so nclassic.o 
+c++ -std=c++20 -shared -o nclassic.so nclassic.o -llua
 ```
 and dropped into the lua/5.4 directory, required as convention. 
 nclassic 1.2 doesn't need an Object class, it creates a class table:
