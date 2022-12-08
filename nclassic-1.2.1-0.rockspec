@@ -1,8 +1,8 @@
 package = 'nclassic'
-version = '1.2.1-1'
+version = '1.2.1-0'
 source  = {
     url = 'git://github.com/ImpishDeathTech/nclassic',
-    tag = 'v1.2.1'
+    tag = 'nclassic-1-2-1'
 }
 
 description = {
