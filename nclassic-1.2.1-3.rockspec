@@ -24,8 +24,12 @@ dependencies = {
 build = {
     type = 'make',
     build_variables = {
+        SRC="./1_2_1/nclassic.cxx",
+        OBJ="nclassic.o", 
+        LIB="nclassic.so", 
         CXX="g++ -std=c++20",
         CFLAGS="$(CFLAGS)",
+        LFLAGS="-llua",
         LIBFLAG="$(LIBFLAG)",
         LUA_LIBDIR="$(LUA_LIBDIR)",
         LUA_BINDIR="$(LUA_BINDIR)",
@@ -33,6 +37,8 @@ build = {
         LUA="$(LUA)",
     },
     install_variables = {
+        OBJ="nclassic.o", 
+        LIB="nclassic.so",
         INST_PREFIX="$(PREFIX)",
         INST_BINDIR="$(BINDIR)",
         INST_LIBDIR="$(LIBDIR)",
