@@ -1,4 +1,4 @@
-SRC = 1_2_1/nclassic.cxx
+SRC = ./1_2_1/nclassic.cxx
 OBJ = nclassic.o 
 LIB = nclassic.so 
 
