@@ -25,8 +25,8 @@ build = {
     type = 'make',
     build_variables = {
         CXX="g++ -std=c++20",
-        CFLAGS="-fpic -c",
-        LFLAGS="-shared -llua -o",
+        CFLAGS="$(CFLAGS)",
+        LFLAGS="$(LIBFLAG)",
         LUA_LIBDIR="$(LUA_LIBDIR)",
         LUA_BINDIR="$(LUA_BINDIR)",
         LUA_INCDIR="$(LUA_INCDIR)",
