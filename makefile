@@ -1,15 +1,16 @@
 SRC = ./1_2_1/nclassic.cxx
 OBJ = nclassic.o 
-LIB = nclassic.so 
+LIB = nclassic.so
+LFLAGS = -llua -o
 
 compile:
 	@echo CXX Compiling '$(OBJ)' ...
-	$(CXX) $(CFLAGS) $(SRC) -o $(OBJ)
+	$(CXX) $(CFLAGS) -c $(SRC) -o $(OBJ)
 
 build:
 	@make compile
 	@echo CXX Building 'nclassic.so' ...
-	$(CXX) $(LFLAGS) nclassic.so nclassic.o
+	$(CXX) $(LIBFLAG) $(LFLAGS) $(LIB) $(OBJ)
 
 install: $(LIB) $(OBJ)
 	@echo Installing '$(LIB)'
