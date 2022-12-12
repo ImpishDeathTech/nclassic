@@ -14,6 +14,7 @@ build:
 install: $(LIB) $(OBJ)
 	@echo Installing '$(LIB)'
 	cp $(LIB) $(INST_LIBDIR)/$(LIB)
+	@echo Done! ^,..,^
 
 clean:
 	@echo Cleaning up ..
