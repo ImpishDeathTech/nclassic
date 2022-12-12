@@ -24,18 +24,19 @@ dependencies = {
 build = {
     type = 'make',
     build_variables = {
-        CFLAGS="$(CFLAGS)",
-        LIBFLAG="$(LIBFLAG)",
+        CXX="g++ -std=c++20",
+        CFLAGS="-fpic -c",
+        LFLAGS="-shared -llua -o",
         LUA_LIBDIR="$(LUA_LIBDIR)",
         LUA_BINDIR="$(LUA_BINDIR)",
         LUA_INCDIR="$(LUA_INCDIR)",
         LUA="$(LUA)",
- },
- install_variables = {
-    INST_PREFIX="$(PREFIX)",
-    INST_BINDIR="$(BINDIR)",
-    INST_LIBDIR="$(LIBDIR)",
-    INST_LUADIR="$(LUADIR)",
-    INST_CONFDIR="$(CONFDIR)",
+    },
+    install_variables = {
+        INST_PREFIX="$(PREFIX)",
+        INST_BINDIR="$(BINDIR)",
+        INST_LIBDIR="$(LIBDIR)",
+        INST_LUADIR="$(LUADIR)",
+        INST_CONFDIR="$(CONFDIR)",
  },
 }
